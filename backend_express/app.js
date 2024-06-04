@@ -24,8 +24,10 @@ const Loan = require('./models/Loan');
 const Reservation = require('./models/Reservation');
 const Log = require('./models/Log');
 const  userRoutes = require('./routes/user');
+const  bookRoutes = require('./routes/book');
 
 app.use('/users', userRoutes);
+app.use('/books', bookRoutes);
 
 // Endpoint testowy połączenia z bazą danych
 app.get('/test-db-connection', async (req, res) => {
