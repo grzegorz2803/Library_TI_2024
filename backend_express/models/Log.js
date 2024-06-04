@@ -18,7 +18,7 @@ const Log = sequelize.define('Log', {
     },
     timestamp: {
         type: DataTypes.DATE,
-        allowNull: false,
+        allowNull: false
     },
 }, {
     tableName: 'log'

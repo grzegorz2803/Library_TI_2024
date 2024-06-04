@@ -2,7 +2,9 @@ const express  = require('express');
 const bcrypt = require('bcrypt');
 const  router = express.Router();
 const User = require('../models/User');
+const Log = require('../models/Log');
 
+// rejestraca usera
 router.post('/register', async (req, res)=>{
     try{
         const {login, password, email, name, lastName, addres} = req.body;
@@ -19,6 +21,7 @@ router.post('/register', async (req, res)=>{
         res.status(500).json({message: error.message});
     }
 });
+//logowanie usera
 router.post('/login', async (req, res)=>{
     try{
         const {login, password} = req.body;
@@ -30,10 +33,23 @@ router.post('/login', async (req, res)=>{
         if (!isPasswordValid){
             return res.status(401).json({message: 'Błędny login lub hasło'});
         }
+        const logEntry  = await Log.create({id_user: user.id_user, action: 'log in', timestamp: new Date()});
+        if (!logEntry) {
+            return res.status(500).json({ message: 'Wystąpił błąd przy logowaniu' });
+        }
         const userData = {...user.get(), password:undefined};
         res.status(200).json(userData);
     }catch (error){
         res.status(500).json({message:'Wystąpił bład',error:error.message});
     }
+});
+// wyświetlanie wszytskich userów
+router.get('/', async (req, res)=>{
+   try{
+       const users = await User.findAll();
+       res.status(200).json(users);
+   } catch (error){
+       res.status(500).json({message: 'Wystąpił bład', error:error.message});
+   }
 });
 module.exports =router;
