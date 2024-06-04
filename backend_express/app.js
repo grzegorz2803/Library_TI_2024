@@ -26,6 +26,7 @@ const Log = require('./models/Log');
 const  userRoutes = require('./routes/user');
 
 app.use('/users', userRoutes);
+
 // Endpoint testowy połączenia z bazą danych
 app.get('/test-db-connection', async (req, res) => {
     try {
