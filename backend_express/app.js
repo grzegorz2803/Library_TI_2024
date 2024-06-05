@@ -21,9 +21,11 @@ app.use(session({
 const User = require('./models/User');
 const  userRoutes = require('./routes/user');
 const  bookRoutes = require('./routes/book');
+const loanRoutes = require('./routes/loan');
 const reservationRoutes = require('./routes/reservation');
-app.use('/reservations', reservationRoutes);
 
+app.use('/reservations', reservationRoutes);
+app.use('/loans', loanRoutes);
 
 app.use('/users', userRoutes);
 app.use('/books', bookRoutes);
