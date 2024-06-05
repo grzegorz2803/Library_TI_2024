@@ -56,4 +56,16 @@ router.get('/search', async (req,res)=>{
        res.status(500).json({message: 'Wystąpił błąd',error:error.message});
    }
 });
+
+// 3-losowe ksiązki
+router.get('/random', async (req,res)=>{
+   try{
+       const booksCount = await Book.count();
+       const randomOffset  =Math.floor(Math.random()*(booksCount-3));
+       const randomBooks = await Book.findAll({limit:3, offset:randomOffset});
+       res.status(200).json(randomBooks);
+   } catch (error){
+       res.status(500).json({message: 'Wystąpił błąd', error:error.message});
+   }
+});
 module.exports= router;

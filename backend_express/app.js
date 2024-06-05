@@ -21,6 +21,9 @@ app.use(session({
 const User = require('./models/User');
 const  userRoutes = require('./routes/user');
 const  bookRoutes = require('./routes/book');
+const reservationRoutes = require('./routes/reservation');
+app.use('/reservations', reservationRoutes);
+
 
 app.use('/users', userRoutes);
 app.use('/books', bookRoutes);

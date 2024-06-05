@@ -8,7 +8,7 @@ const Log = require('../models/Logi');
 router.post('/register', async (req, res)=>{
     try{
         const {login, password, email, name, lastName, addres} = req.body;
-        const role = 'reader';
+        const role = 'admin';
         const existingUser = await  User.findOne({where:{login}});
         if(existingUser){
             return res.status(409).json({message: 'Login już istnieje'});
