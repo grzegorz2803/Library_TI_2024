@@ -20,6 +20,7 @@ app.use(session({
 // Importowanie modeli
 const User = require('./models/User');
 const Book = require('./models/Book');
+const Loan = require('./models/Loan');
 const Reservation = require('./models/Reservation');
 
 const  userRoutes = require('./routes/user');
@@ -33,6 +34,11 @@ Reservation.belongsTo(User, { foreignKey: 'id_user' });
 Book.hasMany(Reservation, { foreignKey: 'id_book' });
 Reservation.belongsTo(Book, { foreignKey: 'id_book' });
 
+User.hasMany(Loan, { foreignKey: 'id_user' });
+Loan.belongsTo(User, { foreignKey: 'id_user' });
+
+Book.hasMany(Loan, { foreignKey: 'id_book' });
+Loan.belongsTo(Book, { foreignKey: 'id_book' });
 app.use('/reservations', reservationRoutes);
 app.use('/loans', loanRoutes);
 

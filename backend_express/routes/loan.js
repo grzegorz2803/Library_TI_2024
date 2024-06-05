@@ -18,7 +18,7 @@ router.get('/:login', async (req, res) => {
         // Pobranie wypożyczonych, ale nie oddanych książek przez użytkownika
         const loans = await Loan.findAll({
             where: {
-                id_user: user.id,
+                id_user: user.id_user,
                 return_date: {
                     [Op.is]: null
                 }
@@ -72,6 +72,40 @@ router.get('/returned/:login', async (req, res) => {
         });
 
         res.status(200).json(result);
+    } catch (error) {
+        res.status(500).json({ message: 'Wystąpił błąd', error: error.message });
+    }
+});
+router.post('/borrow', async (req, res) => {
+    try {
+        const { id_book, name, lastName } = req.body;
+
+        // Znalezienie użytkownika na podstawie imienia i nazwiska
+        const user = await User.findOne({ where: { name, lastName } });
+        if (!user) {
+            return res.status(404).json({ message: 'Użytkownik nie znaleziony' });
+        }
+
+        // Znalezienie książki na podstawie id_book
+        const book = await Book.findOne({ where: { id_book } });
+        if (!book) {
+            return res.status(404).json({ message: 'Książka nie znaleziona' });
+        }
+
+
+
+        // Tworzenie nowego wpisu wypożyczenia
+        const newLoan = await Loan.create({
+            id_user: user.id_user,
+            id_book: book.id_book,
+            loan_date: new Date()
+        });
+
+        // Zmiana statusu książki na "wypożyczona"
+        book.availablity = 'wypożyczona';
+        await book.save();
+
+        res.status(201).json({ message: 'Książka została wypożyczona', loan: newLoan });
     } catch (error) {
         res.status(500).json({ message: 'Wystąpił błąd', error: error.message });
     }
