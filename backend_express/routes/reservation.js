@@ -37,5 +37,38 @@ router.get('/:login', async (req, res) => {
         res.status(500).json({ message: 'Wystąpił błąd', error: error.message });
     }
 });
+router.post('/', async (req, res) => {
+    try {
+        const { login, id_book } = req.body;
 
+        // Znalezienie użytkownika na podstawie loginu
+        const user = await User.findOne({ where: { login } });
+        if (!user) {
+            return res.status(404).json({ message: 'Użytkownik nie znaleziony' });
+        }
+
+        // Sprawdzenie, czy książka istnieje
+        const book = await Book.findOne({ where: { id_book } });
+        if (!book) {
+            return res.status(404).json({ message: 'Książka nie znaleziona' });
+        }
+
+
+        // Tworzenie nowej rezerwacji
+        const newReservation = await Reservation.create({
+            id_user: user.id_user,
+            id_book: book.id_book,
+            reservation_date: new Date(),
+            status: 'zarezerwowana'
+        });
+
+        // Zmiana statusu książki na "zarezerwowana"
+        book.availablity = 'zarezerwowana';
+        await book.save();
+
+        res.status(201).json({ message: 'Rezerwacja zakończona sukcesem', reservation: newReservation });
+    } catch (error) {
+        res.status(500).json({ message: 'Wystąpił błąd', error: error.message });
+    }
+});
 module.exports = router;
