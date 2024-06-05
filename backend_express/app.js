@@ -1,4 +1,5 @@
 // app.js
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const session = require('express-session');
@@ -11,7 +12,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 app.use(session({
-    secret: 'your_secret_key',
+    secret: '3b4f4e8d-9c7b-4c8e-95f1-8d3b3f7a8f3c-1a2b3c4d5e6f7g8h9i0j',
     resave: false,
     saveUninitialized: true,
     cookie: { secure: false }
