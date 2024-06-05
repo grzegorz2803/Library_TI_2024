@@ -3,23 +3,8 @@ const router = express.Router();
 const {Op} = require('sequelize');
 const Book = require('../models/Book');
 
-// dodawanie książki
-router.post('/', async (req, res)=>{
-   try{
-       const {id_book, ISBN, title, author, genre, year, description, imageUrl} = req.body;
-       const availablity = 'dostępna';
-       const existingBook = await Book.findOne({ where: { id_book } });
-       if (existingBook) {
-           return res.status(409).json({ message: 'Książka z takim numerem bibliotecznym już istnieje' });
-       }
-       const newBook = await Book.create({id_book, ISBN, title,author,genre,year,availablity,description,imageUrl});
-       res.status(201).json({message: 'Książka została dodana'});
-   } catch (error){
-       res.status(500).json({message: 'wystąpił błąd', error: error.message});
-   }
-});
 
-//pobieranie wszytskich dostępnych książek
+//pobieranie wszytskich  książek
 router.get('/', async (req,res)=>{
    try{
        const books = await Book.findAll();
@@ -68,4 +53,20 @@ router.get('/random', async (req,res)=>{
        res.status(500).json({message: 'Wystąpił błąd', error:error.message});
    }
 });
+// dodawanie książki
+router.post('/', async (req, res)=>{
+    try{
+        const {id_book, ISBN, title, author, genre, year, description, imageUrl} = req.body;
+        const availablity = 'dostępna';
+        const existingBook = await Book.findOne({ where: { id_book } });
+        if (existingBook) {
+            return res.status(409).json({ message: 'Książka z takim numerem bibliotecznym już istnieje' });
+        }
+        const newBook = await Book.create({id_book, ISBN, title,author,genre,year,availablity,description,imageUrl});
+        res.status(201).json({message: 'Książka została dodana'});
+    } catch (error){
+        res.status(500).json({message: 'wystąpił błąd', error: error.message});
+    }
+});
+
 module.exports= router;
