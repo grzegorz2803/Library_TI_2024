@@ -2,7 +2,7 @@ const express  = require('express');
 const bcrypt = require('bcrypt');
 const  router = express.Router();
 const User = require('../models/User');
-const Log = require('../models/Log');
+const Log = require('../models/Logi');
 
 // rejestraca usera
 router.post('/register', async (req, res)=>{
@@ -33,7 +33,7 @@ router.post('/login', async (req, res)=>{
         if (!isPasswordValid){
             return res.status(401).json({message: 'Błędny login lub hasło'});
         }
-        const logEntry  = await Log.create({id_user: user.id_user, action: 'log in', timestamp: new Date()});
+        const logEntry  = await Log.create({id_user: user.id_user, operation: 'log in', login_date: new Date()});
         if (!logEntry) {
             return res.status(500).json({ message: 'Wystąpił błąd przy logowaniu' });
         }

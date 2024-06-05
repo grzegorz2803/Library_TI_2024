@@ -4,9 +4,12 @@ const sequelize = require('../config/database');
 
 const Book = sequelize.define('Book', {
     id_book: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         primaryKey: true,
-        autoIncrement: true,
+    },
+    ISBN: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     title: {
         type: DataTypes.STRING,

@@ -14,15 +14,11 @@ app.use(session({
     secret: 'your_secret_key',
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false } // Ustaw na true, jeśli używasz HTTPS
+    cookie: { secure: false }
 }));
 
 // Importowanie modeli
 const User = require('./models/User');
-const Book = require('./models/Book');
-const Loan = require('./models/Loan');
-const Reservation = require('./models/Reservation');
-const Log = require('./models/Log');
 const  userRoutes = require('./routes/user');
 const  bookRoutes = require('./routes/book');
 
@@ -65,4 +61,4 @@ app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
 
-module.exports = app; // Eksportowanie aplikacji dla testów
+module.exports = app;

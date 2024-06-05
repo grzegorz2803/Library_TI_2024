@@ -2,7 +2,7 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 
-const Log = sequelize.define('Log', {
+const Logi = sequelize.define('Logi', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -12,16 +12,20 @@ const Log = sequelize.define('Log', {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
-    action: {
+    operation: {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    timestamp: {
+    login_date: {
         type: DataTypes.DATE,
         allowNull: false
     },
+    logout_date: {
+        type: DataTypes.DATE,
+        allowNull: true
+    }
 }, {
     tableName: 'log'
 });
 
-module.exports = Log;
+module.exports = Logi;
