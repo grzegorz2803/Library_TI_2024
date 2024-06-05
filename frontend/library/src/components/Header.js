@@ -1,14 +1,14 @@
 import './Header.css';
 
-function Header() {
+function Header({logout, user, showView}) {
     return (
         <header className="App-header">
             <div className="header-sign">
                 <nav>
                     <ul>
-                        <li><a href="#">Log In</a></li>
-                        <li><a href="#">Sign Up</a></li>
-                        <li><a href="#">Log out</a></li>
+                        {!user && <li><a href="#" onClick={() => showView('login')}>Log in</a></li>}
+                        {user && <li><a href="#" onClick={() => logout()}>Log out</a></li>}
+                        {!user && <li><a href="#" onClick={() => showView('signup')}>Sign Up</a></li>}
                     </ul>
                 </nav>
             </div>
@@ -18,9 +18,9 @@ function Header() {
             <div className="header-menu">
                 <nav>
                     <ul>
-                        <li><a href="#">XXX</a></li>
-                        <li><a href="#">YYY</a></li>
-                        <li><a href="#">ZZZ</a></li>
+                        <li><a href="#" onClick={() => showView('home')}>Home</a></li>
+                        <li><a href="#"onClick={() => showView('about')}>About</a></li>
+                        <li><a href="#"onClick={() => showView('contact')}>Contact</a></li>
                     </ul>
                 </nav>
             </div>

@@ -1,0 +1,19 @@
+.menu {
+    border-left: 1px solid #ddd;
+    padding-left: 20px;
+    height: 100%;
+}
+
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.menu li {
+    margin: 10px 0;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #000;
+}
