@@ -47,6 +47,40 @@ router.get('/borrowed', async (req, res) => {
         res.status(500).json({ message: 'Wystąpił błąd', error: error.message });
     }
 });
+// Pobieranie wszystkich wypożyczonych i oddanych książek wraz z datą wypożyczenia, datą oddania oraz imieniem i nazwiskiem czytelnika
+router.get('/retbooks', async (req, res) => {
+    try {
+        // Pobranie wszystkich wypożyczonych i oddanych książek
+        const loans = await Loan.findAll({
+            where: {
+                return_date: {
+                    [Op.not]: null
+                }
+            },
+            include: [
+                { model: Book },
+                { model: User }
+            ]
+        });
+
+        // Przygotowanie wyników
+        const result = loans.map(loan => {
+            return {
+                book: loan.Book,
+                user: {
+                    name: loan.User.name,
+                    lastName: loan.User.lastName
+                },
+                loan_date: loan.loan_date,
+                return_date: loan.return_date
+            };
+        });
+
+        res.status(200).json(result);
+    } catch (error) {
+        res.status(500).json({ message: 'Wystąpił błąd', error: error.message });
+    }
+});
 router.get('/:login', async (req, res) => {
     try {
         const { login } = req.params;
@@ -196,6 +230,5 @@ router.post('/return', async (req, res) => {
     }
 });
 
-module.exports = router;
 
 module.exports = router;
