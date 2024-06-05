@@ -25,7 +25,7 @@ const Logi = sequelize.define('Logi', {
         allowNull: true
     }
 }, {
-    tableName: 'log'
+    tableName: 'Logi'
 });
 
 module.exports = Logi;
