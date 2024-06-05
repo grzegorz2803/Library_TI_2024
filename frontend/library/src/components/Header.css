@@ -1,0 +1,46 @@
+.App-header {
+    background-color: #1f2635;
+    color: #e4ebfb;
+    padding: 20px;
+}
+
+.header-sign {
+    text-align: right;
+}
+
+.header-title{
+    text-align: center;
+}
+
+.header-menu {
+    text-align: center;
+}
+
+.header-sign nav ul,
+.header-menu nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.header-sign nav ul li,
+.header-menu nav ul li {
+    display: inline-block;
+}
+
+.header-sign nav ul li a,
+.header-menu nav ul li a {
+    color: #e4ebfb;
+    text-decoration: none;
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 5px;
+}
+
+.header-sign nav ul li a:hover,
+.header-menu nav ul li a:hover {
+    background-color: #e4ebfb;
+    color: #1f2635;
+}
+
+
+

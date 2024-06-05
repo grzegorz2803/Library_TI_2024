@@ -1,0 +1,17 @@
+.unlogged{
+    text-align: center;
+    color: #1f2635;
+}
+
+.unlogged-sign nav ul{
+    list-style-type: none;
+    padding: 0;
+}
+
+.unlogged-sign nav ul li a{
+    color: #1f2635;
+    text-decoration: none;
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 5px;
+}
