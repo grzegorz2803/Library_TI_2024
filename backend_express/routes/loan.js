@@ -43,4 +43,37 @@ router.get('/:login', async (req, res) => {
     }
 });
 
+router.get('/returned/:login', async (req, res) => {
+    try {
+        const { login } = req.params;
+
+        const user = await User.findOne({ where: { login } });
+        if (!user) {
+            return res.status(404).json({ message: 'Użytkownik nie znaleziony' });
+        }
+
+        // Pobranie oddanych książek przez użytkownika
+        const loans = await Loan.findAll({
+            where: {
+                id_user: user.id,
+                return_date: {
+                    [Op.not]: null
+                }
+            },
+            include: [{ model: Book }]
+        });
+
+        const result = loans.map(loan => {
+            return {
+                book: loan.Book,
+                loan_date: loan.loan_date,
+                return_date: loan.return_date
+            };
+        });
+
+        res.status(200).json(result);
+    } catch (error) {
+        res.status(500).json({ message: 'Wystąpił błąd', error: error.message });
+    }
+});
 module.exports = router;
