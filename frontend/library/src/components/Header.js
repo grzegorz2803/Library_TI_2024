@@ -8,7 +8,7 @@ function Header({logout, user, showView}) {
                     <ul>
                         {!user && <li><a href="#" onClick={() => showView('login')}>Log in</a></li>}
                         {user && <li><a href="#" onClick={() => logout()}>Log out</a></li>}
-                        {!user && <li><a href="#" onClick={() => showView('signup')}>Sign Up</a></li>}
+                        {!user && <li><a href="#" onClick={() => showView('signup')}>Sign up</a></li>}
                     </ul>
                 </nav>
             </div>
