@@ -4,10 +4,14 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
+const cors = require('cors');
 const sequelize = require('./config/database');
 
 const app = express();
-
+app.use(cors({
+    origin: 'http://localhost:3000', // Domena, z której będą akceptowane żądania
+    credentials: true // Umożliwia wysyłanie i odbieranie cookies
+}));
 app.use(bodyParser.json());
 app.use(cookieParser());
 

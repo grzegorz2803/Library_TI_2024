@@ -20,7 +20,7 @@ router.get('/session', (req, res) => {
 router.post('/register', async (req, res)=>{
     try{
         const {login, password, email, name, lastName, addres} = req.body;
-        const role = 'admin';
+        const role = 'reader';
         const existingUser = await  User.findOne({where:{login}});
         if(existingUser){
             return res.status(409).json({message: 'Login już istnieje'});

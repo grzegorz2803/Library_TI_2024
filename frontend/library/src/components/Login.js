@@ -22,6 +22,7 @@ function Login({ login }) {
             if (response.ok) {
                 // Ustawienie stanu użytkownika na zalogowanego
                 login(data);
+                console.log(data);
             } else {
                 setError(data.message || 'Login failed');
             }
