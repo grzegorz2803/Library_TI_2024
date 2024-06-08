@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-function AvailableBooks() {
+function AvailableBooks({login}) {
     const [books, setBooks] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -30,6 +30,29 @@ function AvailableBooks() {
             [name]: value
         }));
     };
+
+    const handleReservation = async (id) => {
+        try {
+            const response = await fetch('http://localhost:3001/reservations', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ id_book: id, login: login })
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                console.log(data);
+            } else {
+                console.error(data.message || 'Reservation failed');
+            }
+        } catch (error) {
+            console.error('An error occurred. Please try again.', error);
+        }
+    };
+
 
     const filteredBooks = books.filter((book) => {
         return (
@@ -77,6 +100,7 @@ function AvailableBooks() {
                         <p><strong>Year:</strong> {book.year}</p>
                         <p><strong>Availability:</strong> {book.availablity}</p>
                         <p><strong>Description:</strong> {book.description}</p>
+                        <button onClick={() => handleReservation(book.id_book)}>Reserve</button>
                         <hr/>
                         {/*{book.imageUrl && <img src={book.imageUrl} alt={book.title} />}*/}
                     </li>
