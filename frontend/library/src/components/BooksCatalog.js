@@ -22,7 +22,7 @@ function BooksCatalog() {
     if (error) return <div>Error: {error.message}</div>;
 
     return (
-        <div className="books-catalog">
+        <div className="books">
             <h2>Books Catalog</h2>
             <ul>
                 {books.map((book) => (
@@ -33,6 +33,7 @@ function BooksCatalog() {
                         <p><strong>Year:</strong> {book.year}</p>
                         <p><strong>Availability:</strong> {book.availablity}</p>
                         <p><strong>Description:</strong> {book.description}</p>
+                        <hr/>
                         {/*{book.imageUrl && <img src={book.imageUrl} alt={book.title}/>}*/}
                     </li>
                 ))}

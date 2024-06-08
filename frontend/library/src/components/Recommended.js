@@ -27,7 +27,7 @@ function Recommended() {
     if (error) return <div>Error: {error.message}</div>;
 
     return (
-        <div className="recommended-books">
+        <div className="books">
             <h2>Recommended Books</h2>
             <ul>
                 {books.map((book) => (
@@ -38,6 +38,7 @@ function Recommended() {
                         <p><strong>Year:</strong> {book.year}</p>
                         <p><strong>Availability:</strong> {book.availablity}</p>
                         <p><strong>Description:</strong> {book.description}</p>
+                        <hr/>
                         {/*{book.imageUrl && <img src={book.imageUrl} alt={book.title} />}*/}
                     </li>
                 ))}
