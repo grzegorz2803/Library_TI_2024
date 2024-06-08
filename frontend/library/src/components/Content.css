@@ -29,8 +29,7 @@
     overflow-y: auto;
 }
 
-.menu ul,
-.books ul{
+.menu ul {
     list-style-type: none;
     padding: 0;
 }
@@ -160,7 +159,102 @@
     margin:0 80px;
 }
 
+/*----------------------------------- HISTORY ---------------------------------------------*/
+.history {
+    padding: 20px;
+    margin: 20px 0;
+}
 
+.history h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.history h3 {
+    color: #033d7c;
+    margin-bottom: 10px;
+}
+
+.history ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.history ul li {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.history ul li h4 {
+    margin: 0 0 10px 0;
+    color: #333;
+}
+
+.history ul li p {
+    margin: 5px 0;
+    color: #555;
+}
+
+.history .reserved-books,
+.history .loaned-books,
+.history .returned-books {
+    margin-bottom: 20px;
+}
+
+
+/*----------------------------- BOOKS --------------------------------------------------*/
+.books {
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.books h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.books ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.books ul li {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.books ul li h3 {
+    margin: 0 0 10px 0;
+    color: #033d7c;
+}
+
+.books ul li p {
+    margin: 5px 0;
+    color: #555;
+}
+
+.books ul li hr {
+    border: 0;
+    border-top: 1px solid #ddd;
+    margin: 10px 0;
+}
+
+.books ul li img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-top: 10px;
+}
 /*------------------------- FOOTER ------------------------------------------*/
 footer {
     background-color: #e4ebfb;
