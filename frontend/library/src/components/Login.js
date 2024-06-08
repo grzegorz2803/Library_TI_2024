@@ -10,20 +10,16 @@ function Login({login}) {
     // Sprawdzenie, czy istnieją zapisane dane logowania w cookies podczas ładowania komponentu
     useEffect(() => {
         const savedUsername = Cookies.get('username');
+        const savedPassword = Cookies.get('password');
         if (savedUsername) {
             setUsername(savedUsername);
+            setPassword(savedPassword);
             setRememberMe(true);
         }
     }, []);
 
     const handleLogin = async (e) => {
         e.preventDefault();
-
-/*        if (rememberMe) {
-            Cookies.set('username', username, {expires: 365});
-        } else {
-            Cookies.remove('username');
-        }*/
 
         try {
             const response = await fetch('http://localhost:3001/users/login', {
@@ -41,8 +37,10 @@ function Login({login}) {
                 // Zapamiętywanie nazwy użytkownika, jeśli opcja "Remember Me" jest zaznaczona
                 if (rememberMe) {
                     Cookies.set('username', username, {expires: 365});
+                    Cookies.set('password', password, {expires: 365});
                 } else {
                     Cookies.remove('username');
+                    Cookies.remove('password');
                 }
 
                 // Ustawienie stanu użytkownika na zalogowanego
