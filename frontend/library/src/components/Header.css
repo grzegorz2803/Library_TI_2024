@@ -2,10 +2,16 @@
     background-color: #1f2635;
     color: #e4ebfb;
     padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
 }
 
 .header-sign {
     text-align: right;
+    padding-right: 60px;
 }
 
 .header-title{
