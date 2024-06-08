@@ -30,7 +30,7 @@ function AvailableBooks({login, user}) {
             [name]: value
         }));
     };
-
+    const userName = localStorage.getItem('login');
     const handleReservation = async (id) => {
         try {
             const response = await fetch('http://localhost:3001/reservations', {
@@ -38,7 +38,7 @@ function AvailableBooks({login, user}) {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ id_book: id, login: login })
+                body: JSON.stringify({ id_book: id, login: userName })
             });
 
             const data = await response.json();

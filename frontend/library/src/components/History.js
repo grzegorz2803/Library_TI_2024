@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Cookies from "js-cookie";
 
-function History({ user }) {
-    const userLogin = Cookies.get('username');
+function History({ user}) {
+    const userName = localStorage.getItem('login');
+    console.log(userName);
     const [reservedBooks, setReservedBooks] = useState([]);
     const [loanedBooks, setLoanedBooks] = useState([]);
     const [returnedBooks, setReturnedBooks] = useState([]);
@@ -14,21 +15,19 @@ function History({ user }) {
             const fetchHistory = async () => {
                 try {
                     const [reservedResponse, loanedResponse, returnedResponse] = await Promise.all([
-                        fetch(`http://localhost:3001/reservations/${userLogin}`),
-                        fetch(`http://localhost:3001/loans/${userLogin}`),
-                        fetch(`http://localhost:3001/loans/returned/${userLogin}`)
+                        fetch(`http://localhost:3001/reservations/${userName}`),
+                        fetch(`http://localhost:3001/loans/${userName}`),
+                        fetch(`http://localhost:3001/loans/returned/${userName}`)
                     ]);
 
                     const reservedData = await reservedResponse.json();
-                    console.log(reservedData);
                     const loanedData = await loanedResponse.json();
-                    console.log(loanedData);
                     const returnedData = await returnedResponse.json();
-    console.log(returnedData);
+                    setLoading(false);
                     setReservedBooks(reservedData);
                     setLoanedBooks(loanedData);
                     setReturnedBooks(returnedData);
-                    setLoading(false);
+
                 } catch (error) {
                     setError(error);
                     setLoading(false);
@@ -39,7 +38,7 @@ function History({ user }) {
         }
     }, [user]);
 
-    if (loading) return <div>History Loading...</div>;
+    if (loading) return <div></div>;
     if (error) return <div>Error: {error.message}</div>;
 
     return (

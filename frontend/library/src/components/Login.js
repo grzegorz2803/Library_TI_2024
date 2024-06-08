@@ -45,7 +45,7 @@ function Login({login}) {
 
                 // Ustawienie stanu użytkownika na zalogowanego
                 login(data);
-                console.log(data);
+                localStorage.setItem('login',data.user.login);
             } else {
                 setError(data.message || 'Login failed');
             }

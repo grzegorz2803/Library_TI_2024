@@ -2,7 +2,7 @@ import './App.css';
 import Header from "./components/Header";
 import Content from "./components/Content";
 import Footer from "./components/Footer";
-import {useState} from "react";
+import {useState, useEffect} from "react";
 
 function App() {
     const [user, setUser] = useState(null);
@@ -21,11 +21,14 @@ function App() {
     const showView = (view) => {
         setCurrentView(view);
     };
+    const [sessionData, setSessionData] = useState(null);
+
+
 
     return (
         <div className="App">
             <Header login={login} logout={logout} user={user} showView={showView}/>
-            <Content user={user} currentView={currentView} login={login} showView={showView}/>
+            <Content user={user} currentView={currentView} login={login} showView={showView}  />
             <Footer/>
         </div>
     );
