@@ -11,6 +11,7 @@ import Contact from "./Contact";
 import BooksCatalog from "./BooksCatalog";
 import AvailableBooks from "./AvailableBooks";
 import Recommended from "./Recommended";
+import History from "./History";
 
 function Content({user, currentView, login, showView}) {
 
@@ -28,9 +29,10 @@ function Content({user, currentView, login, showView}) {
                 {currentView === 'contact' && <Contact />}
                 {currentView === 'catalog' && <BooksCatalog />}
                 {currentView === 'availableBooks' && <AvailableBooks />}
+                {user && currentView === 'history' && <History user={user} />}
             </div>
             <div className="side-menu">
-                <Menu showView={showView}/>
+                <Menu showView={showView} user={user}/>
             </div>
         </div>
     );
