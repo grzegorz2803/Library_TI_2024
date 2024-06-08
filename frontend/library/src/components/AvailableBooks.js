@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-function AvailableBooks({login}) {
+function AvailableBooks({login, user}) {
     const [books, setBooks] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -100,7 +100,7 @@ function AvailableBooks({login}) {
                         <p><strong>Year:</strong> {book.year}</p>
                         <p><strong>Availability:</strong> {book.availablity}</p>
                         <p><strong>Description:</strong> {book.description}</p>
-                        <button onClick={() => handleReservation(book.id_book)}>Reserve</button>
+                        {user && <button onClick={() => handleReservation(book.id_book)}>Reserve</button>}
                         <hr/>
                         {/*{book.imageUrl && <img src={book.imageUrl} alt={book.title} />}*/}
                     </li>

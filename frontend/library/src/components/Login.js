@@ -18,6 +18,7 @@ function Login({login}) {
         }
     }, []);
 
+
     const handleLogin = async (e) => {
         e.preventDefault();
 
@@ -31,7 +32,6 @@ function Login({login}) {
             });
 
             const data = await response.json();
-
 
             if (response.ok) {
                 // Zapamiętywanie nazwy użytkownika, jeśli opcja "Remember Me" jest zaznaczona

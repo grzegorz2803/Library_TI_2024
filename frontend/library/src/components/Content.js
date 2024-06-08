@@ -28,7 +28,7 @@ function Content({user, currentView, login, showView}) {
                 {currentView === 'about' && <About/>}
                 {currentView === 'contact' && <Contact/>}
                 {currentView === 'catalog' && <BooksCatalog/>}
-                {currentView === 'availableBooks' && <AvailableBooks login={login}/>}
+                {currentView === 'availableBooks' && <AvailableBooks login={login} user={user}/>}
                 {user && currentView === 'history' && <History user={user}/>}
             </div>
             <div className="side-menu">
