@@ -13,7 +13,7 @@
     padding: 20px;
     overflow-y: auto;
 }
-
+/*---------------------MENU----------------------------------------------*/
 .menu {
     height: 100%;
 }
@@ -48,4 +48,108 @@
 .menu ul li a:hover {
     background-color: #e4ebfb;
     color: #1f2635;
+}
+
+/*--------------------------LOGIN-------------------------------------------*/
+
+.login {
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #d9def4;
+}
+
+.login h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.login label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.login input[type="text"],
+.login input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+.login input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+.login button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.login button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.error {
+    margin-top: 10px;
+}
+
+
+/*------------------------------- SIGN UP ------------------------------------*/
+
+.signup {
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #d9def4;
+}
+
+.signup h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.signup label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.signup input[type="text"],
+.signup input[type="password"],
+.signup input[type="email"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+.signup button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.signup button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.message {
+    margin-top: 10px;
 }

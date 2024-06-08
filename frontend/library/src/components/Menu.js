@@ -1,5 +1,3 @@
-import './Menu.css';
-
 function Menu({showView, user}) {
     return (
         <div className="menu">
