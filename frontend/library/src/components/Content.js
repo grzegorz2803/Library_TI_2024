@@ -18,22 +18,23 @@ function Content({user, currentView, login, showView}) {
     return (
         <div className="content-container">
             <div className="main-content">
-                {!user && currentView === 'unlogged' && <Unlogged />}
-                {!user && currentView === 'login' && <Login login={login} />}
-                {!user && currentView === 'signup' && <Signup />}
+                {!user && currentView === 'unlogged' && <Unlogged/>}
+                {!user && currentView === 'login' && <Login login={login}/>}
+                {!user && currentView === 'signup' && <Signup/>}
                 {user && <Reader/>}
                 {user && currentView === 'home' && <Reader/>}
-                {!user && currentView === 'home' && <Recommended />}
-                {currentView === 'recommended' && <Recommended />}
-                {currentView === 'about' && <About />}
-                {currentView === 'contact' && <Contact />}
-                {currentView === 'catalog' && <BooksCatalog />}
-                {currentView === 'availableBooks' && <AvailableBooks />}
-                {user && currentView === 'history' && <History user={user} />}
+                {!user && currentView === 'home' && <Recommended/>}
+                {currentView === 'recommended' && <Recommended/>}
+                {currentView === 'about' && <About/>}
+                {currentView === 'contact' && <Contact/>}
+                {currentView === 'catalog' && <BooksCatalog/>}
+                {currentView === 'availableBooks' && <AvailableBooks/>}
+                {user && currentView === 'history' && <History user={user}/>}
             </div>
             <div className="side-menu">
                 <Menu showView={showView} user={user}/>
             </div>
+
         </div>
     );
 }

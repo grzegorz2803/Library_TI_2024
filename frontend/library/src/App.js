@@ -1,6 +1,7 @@
 import './App.css';
 import Header from "./components/Header";
 import Content from "./components/Content";
+import Footer from "./components/Footer";
 import {useState} from "react";
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
         <div className="App">
             <Header login={login} logout={logout} user={user} showView={showView}/>
             <Content user={user} currentView={currentView} login={login} showView={showView}/>
+            <Footer/>
         </div>
     );
 }

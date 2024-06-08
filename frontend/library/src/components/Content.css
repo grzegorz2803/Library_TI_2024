@@ -6,7 +6,7 @@
     background-color: #d2d8f3;
     text-align: center;
     padding-left:220px;
-    margin-top: 180px;
+    margin-top: 160px;
 }
 
 .main-content {
@@ -153,4 +153,22 @@
 
 .message {
     margin-top: 10px;
+}
+
+/*--------------------- ABOUT --------------------------------------*/
+.library-info {
+    margin:0 80px;
+}
+
+
+/*------------------------- FOOTER ------------------------------------------*/
+footer {
+    background-color: #e4ebfb;
+    text-align: center;
+     position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+footer p{
+    margin:5px;
 }
