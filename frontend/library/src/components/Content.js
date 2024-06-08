@@ -10,6 +10,7 @@ import About from "./About";
 import Contact from "./Contact";
 import BooksCatalog from "./BooksCatalog";
 import AvailableBooks from "./AvailableBooks";
+import Recommended from "./Recommended";
 
 function Content({user, currentView, login, showView}) {
 
@@ -21,7 +22,8 @@ function Content({user, currentView, login, showView}) {
                 {!user && currentView === 'signup' && <Signup />}
                 {user && <Reader/>}
                 {user && currentView === 'home' && <Reader/>}
-                {!user && currentView === 'home' && <Unlogged />}
+                {!user && currentView === 'home' && <Recommended />}
+                {currentView === 'recommended' && <Recommended />}
                 {currentView === 'about' && <About />}
                 {currentView === 'contact' && <Contact />}
                 {currentView === 'catalog' && <BooksCatalog />}
